@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SAC - IIIT Naya Raipur{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-usrs"><img src="{% static 'images/sac.png' %}" width="60px"></i>
+                </div>
+                <span class="logo-text">SAC - IIIT NAYA RAIPUR</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="{% url 'core:home' %}" class="nav-link {% block nav_home %}{% endblock %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'clubs:clubs_list' %}" class="nav-link {% block nav_clubs %}{% endblock %}">CLUBS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'events:events_list' %}" class="nav-link {% block nav_events %}{% endblock %}">EVENTS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'core:members' %}" class="nav-link {% block nav_members %}{% endblock %}">MEMBERS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'gallery:gallery_list' %}" class="nav-link {% block nav_gallery %}{% endblock %}">GALLERY</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'core:contact' %}" class="nav-link {% block nav_contact %}{% endblock %}">CONTACT</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="logo-text">SAC IIITNR ☀️</span>
+                    </div>
+                    <p>Empowering Students through Technology, Innovation, and Collaborative Learning. Join our Community and Shape the Future of Technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'clubs:clubs_list' %}">CLUBS</a></li>
+                        <li><a href="{% url 'events:events_list' %}">Events</a></li>
+                        <li><a href="{% url 'core:members' %}">Members</a></li>
+                        <li><a href="{% url 'gallery:gallery_list' %}">Gallery</a></li>
+                        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Learning Materials</a></li>
+                        <li><a href="#">Project Guidelines</a></li>
+                        <li><a href="#">Code of Conduct</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> sac@iiitnr.edu.in</p>
+                        <p><i class="fas fa-phone"></i> +91 7998817223</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Incubation Center</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 2PM-6PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Made with ❤️ By INNOVENTURES | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

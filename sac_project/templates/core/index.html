@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SAC - Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Welcome to SAC-IIITNR ☀️</h1>
+                <p class="hero-subtitle">Empowering Students through Technology, Innovation, Cultural activities and Collaborative Learning. Join our Community of Passionate Developers, Designers, and Tech Enthusiasts.</p>
+                <div class="hero-buttons">
+                    <a href="{% url 'clubs:clubs_list' %}" class="btn btn-primary">Explore Clubs</a>
+                    <a href="{% url 'core:contact' %}" class="btn btn-secondary">Contact Us</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1500+</span>
+                        <span class="stat-label">Active Members</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Events Hosted</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Projects Built</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Technology and Innovation">
+                    <div class="image-overlay">
+                        <div class="floating-card">
+                            <i class="fas fa-code"></i>
+                            <span>Code Together</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Innovate</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-rocket"></i>
+                            <span>Launch Ideas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">WHAT WE OFFER</h2>
+            <p class="section-subtitle">Discover the amazing opportunities and resources available to our members</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Coding Workshops</h3>
+                <p>Learn programming languages and development frameworks through hands-on workshops led by industry experts and experienced peers.</p>
+                <a href="{% url 'events:events_list' %}" class="feature-link">View Workshops <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Tech Projects</h3>
+                <p>Collaborate on exciting projects that solve real-world problems and build your portfolio with cutting-edge technologies.</p>
+                <a href="{% url 'gallery:gallery_list' %}" class="feature-link">See Projects <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Networking</h3>
+                <p>Connect with like-minded peers and industry professionals to expand your network and discover new opportunities.</p>
+                <a href="{% url 'core:members' %}" class="feature-link">Meet Members <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Competitions</h3>
+                <p>Participate in hackathons and coding competitions to challenge your skills and win amazing prizes.</p>
+                <a href="{% url 'events:events_list' %}" class="feature-link">Join Competition <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3>Cultural Events</h3>
+                <p>Participate in dance and music competitions to challenge your skills and win amazing prizes.</p>
+                <a href="{% url 'events:events_list' %}" class="feature-link">Join Competition <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>Sports Events</h3>
+                <p>Participate in various sport events competitions to challenge your skills and win amazing prizes.</p>
+                <a href="{% url 'events:events_list' %}" class="feature-link">Join Competition <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events -->
+<section class="upcoming-events">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-subtitle">Don't miss out on these exciting upcoming events and workshops</p>
+        </div>
+        <div class="events-grid">
+            {% if upcoming_events %}
+                {% for event in upcoming_events %}
+                <div class="event-card {% if forloop.first %}featured{% endif %}">
+                    {% if forloop.first %}
+                    <div class="event-badge">Featured</div>
+                    {% endif %}
+                    <div class="event-date">
+                        <span class="month">{{ event.date|date:"M"|upper }}</span>
+                        <span class="day">{{ event.date|date:"d" }}</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>{{ event.name }}</h3>
+                        <p>{{ event.description|truncatewords:20 }}</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> {{ event.timing }}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> {{ event.location }}</span>
+                            {% if event.additional_info %}
+                            <span><i class="fas fa-users"></i> {{ event.additional_info }}</span>
+                            {% endif %}
+                        </div>
+                        <a href="{% url 'events:events_list' %}" class="btn {% if forloop.first %}btn-primary{% else %}btn-outline{% endif %} btn-sm">{% if forloop.first %}Register Now{% else %}Learn More{% endif %}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="event-card">
+                    <div class="event-info">
+                        <h3>No Upcoming Events</h3>
+                        <p>Check back soon for exciting upcoming events and workshops!</p>
+                        <a href="{% url 'events:events_list' %}" class="btn btn-outline btn-sm">View Past Events</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="events-cta">
+            <a href="{% url 'events:events_list' %}" class="btn btn-secondary">View All Events</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">What Our Members Say</h2>
+            <p class="section-subtitle">Hear from Our Community about their TechClub Experience</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"TechClub has been instrumental in my growth as a developer. The workshops and projects have given me real-world experience that I couldn't get anywhere else."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AS</div>
+                    <div class="author-info">
+                        <h4>Arun.K</h4>
+                        <span>Computer Science Senior</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"The networking opportunities and mentorship I've received through TechClub have been invaluable. I've made lifelong connections and learned from amazing peers."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SJ</div>
+                    <div class="author-info">
+                        <h4>Tanuja</h4>
+                        <span>Software Engineering Junior</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"From hackathons to tech talks, TechClub offers diverse opportunities to learn and grow. It's more than a club - it's a community that supports your journey."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MC</div>
+                    <div class="author-info">
+                        <h4>Teja.K</h4>
+                        <span>Computer Engineering Sophomore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

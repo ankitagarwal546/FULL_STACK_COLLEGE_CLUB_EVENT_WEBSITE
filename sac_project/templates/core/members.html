@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SAC - Members{% endblock %}
+{% block nav_members %}active{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Our Team</h1>
+        <p>Meet the passionate individuals who make TechClub Amazing</p>
+    </div>
+</section>
+
+<!-- Leadership Team -->
+<section class="members-section">
+    <div class="container">
+        <h2 class="section-title">Core Team</h2>
+        <div class="members-grid">
+            <div class="member-card">
+                <div class="member-avatar">Dr.LM</div>
+                <h3>Dr. Lakhindar Murmu</h3>
+                <div class="member-role">SAC President</div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">ON</div>
+                <h3>Om Nath</h3>
+                <div class="member-role">PG Representative (Boys)</div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">VP</div>
+                <h3>Virat Patel</h3>
+                <div class="member-role">UG Representative (Boys)</div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">PT</div>
+                <h3>Prakriti Thakur</h3>
+                <div class="member-role">UG Representative (Girls)</div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">PS</div>
+                <h3>Priyadarshi Satyakam</h3>
+                <div class="member-role">Science and Technology <br>Secretary (Boys)</br></div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">KSR</div>
+                <h3>Karishma Singh Roy</h3>
+                <div class="member-role">Science and Technology <br>Secretary (Girls)</br></div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">AT</div>
+                <h3>Aditya Tiwari</h3>
+                <div class="member-role">Arts, Cultural and Literary <br>Secretary (Boys)</br></div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">SK</div>
+                <h3>P. Stuti Keerthana</h3>
+                <div class="member-role">Arts, Cultural and Literary <br>Secretary (Girls)</br></div>
+                
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">MP</div>
+                <h3>Mithesh Pherwani</h3>
+                <div class="member-role">Sports Secretary (Boys)</div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Join Us Section -->
+<section class="join-section" style="padding: 80px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+    <div class="container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Want to Join Our Team?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+            We're always looking for passionate students who want to make a difference in the tech community.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="{% url 'core:contact' %}" class="btn btn-secondary">Get Involved</a>
+            <a href="{% url 'events:events_list' %}" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Attend an Event</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

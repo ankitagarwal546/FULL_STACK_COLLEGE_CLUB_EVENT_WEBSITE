@@ -1,0 +1,26 @@
+⚠️ IMPORTANT: Add SAC Logo to Project
+=========================================
+
+The base template references a logo file at:
+static/images/sac.png
+
+You need to add your SAC logo to this location:
+/Users/ankitagarwal546/Desktop/frontend/COLLEGE-CLUB-WEBSITE/sac_project/static/images/sac.png
+
+If you have the logo file (sac.png) in the root directory, copy it to static/images/:
+
+```bash
+cp sac.png sac_project/static/images/
+```
+
+Or if you're in the sac_project directory:
+```bash
+cp ../sac.png static/images/
+```
+
+After adding the logo, the navbar will display it correctly.
+
+If you don't have a sac.png file, you can:
+1. Create/download a logo for SAC-IIIT Naya Raipur
+2. Save it as sac.png
+3. Copy it to static/images/ directory

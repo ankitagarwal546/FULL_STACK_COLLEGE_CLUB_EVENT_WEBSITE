@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SAC - Events{% endblock %}
+{% block nav_events %}active{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Events</h1>
+        <p>Join us for Exciting Workshops, Competitions, and Tech Talks</p>
+    </div>
+</section>
+
+<!-- Event Tabs -->
+<section class="events-section">
+    <div class="container">
+        <div class="event-tabs">
+            <button class="tab-btn active" data-tab="upcoming">Upcoming Events</button>
+            <button class="tab-btn" data-tab="past">Past Events</button>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div id="upcoming" class="tab-content active">
+            <div class="events-grid">
+                {% for event in upcoming_events %}
+                <div class="event-card-detailed">
+                    <div class="event-image">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.name }}">
+                        {% else %}
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" alt="{{ event.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date-badge">
+                            <span class="month">{{ event.date|date:"M"|upper }}</span>
+                            <span class="day">{{ event.date|date:"d" }}</span>
+                        </div>
+                        <h3>{{ event.name }}</h3>
+                        <p>{{ event.description }}</p>
+                        <div class="event-details">
+                            <div class="detail">
+                                <i class="fas fa-clock"></i>
+                                <span>{{ event.timing }}</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>{{ event.location }}</span>
+                            </div>
+                            {% if event.additional_info %}
+                            <div class="detail">
+                                <i class="fas fa-users"></i>
+                                <span>{{ event.additional_info }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <button class="btn btn-primary">Register Now</button>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No upcoming events at the moment. Stay tuned!</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Past Events -->
+        <div id="past" class="tab-content">
+            <div class="events-grid">
+                {% for event in past_events %}
+                <div class="event-card-detailed past">
+                    <div class="event-image">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.name }}">
+                        {% else %}
+                            <img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800" alt="{{ event.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date-badge past">
+                            <span class="month">{{ event.date|date:"M"|upper }}</span>
+                            <span class="day">{{ event.date|date:"d" }}</span>
+                        </div>
+                        <h3>{{ event.name }}</h3>
+                        <p>{{ event.description }}</p>
+                        {% if event.additional_info %}
+                        <div class="event-stats">
+                            <span><i class="fas fa-info-circle"></i> {{ event.additional_info }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <p>No past events to display.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
