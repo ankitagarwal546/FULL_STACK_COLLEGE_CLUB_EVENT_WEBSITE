@@ -1,0 +1,1 @@
+web: gunicorn sac_project.wsgi --log-file -
