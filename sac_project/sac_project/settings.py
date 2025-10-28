@@ -29,13 +29,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production-#$%^&*()_+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+# Temporarily enable DEBUG to see the actual error
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 # ALLOWED_HOSTS configuration
-ALLOWED_HOSTS = []
-allowed_hosts_env = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1')
-if allowed_hosts_env:
-    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',')]
+ALLOWED_HOSTS = ['*']  # Allow all hosts temporarily for debugging
+# allowed_hosts_env = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+# if allowed_hosts_env:
+#     ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',')]
 
 # Add Render domain if present
 if 'RENDER_EXTERNAL_HOSTNAME' in os.environ:
