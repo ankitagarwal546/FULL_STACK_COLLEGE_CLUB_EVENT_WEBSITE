@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: sac-website
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn sac_project.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.7
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sac-database
+          property: connectionString
+
+databases:
+  - name: sac-database
+    databaseName: sac_db
+    user: sac_user
